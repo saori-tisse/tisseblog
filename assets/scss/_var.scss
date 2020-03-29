@@ -1,0 +1,21 @@
+
+//
+// -------------------------------------
+$color-main: #07005C;
+
+$color-link: #222;
+$color-text: #222;
+
+@function rem($font-size){
+  @return ($font-size)/16 * 1rem;
+}
+
+@mixin wrap {
+  .wrap{
+    width: 1200px;
+    max-width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+  }
+}

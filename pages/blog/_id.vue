@@ -1,7 +1,17 @@
 <template>
-  <div>
-    <h2>{{ item.title }}</h2>
-    <div v-html="item.body"></div>
+  <div class="wrap post-wrap">
+    <div>
+      <div class="post-meta">
+        <div class="thubcatch" v-if="item.icatch">{{item.icatch}}</div>
+        <h2>{{ item.title }}</h2>
+        <p class="tile">
+          <time>{{item.createdAt}}</time>
+        </p>
+      </div>
+      <div class="post-contents">
+        <div v-html="item.body"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,3 +32,34 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.wrap {
+  width: 900px;
+}
+.post {
+  &-wrap {
+    margin-top: 30px;
+  }
+  &-contents {
+    h2 {
+      margin-top: rem(24);
+      font-size: rem(24);
+      + * {
+        margin-top: rem(12);
+      }
+    }
+    h3 {
+      font-size: rem(20);
+      + * {
+        margin-top: rem(8);
+      }
+    }
+    p {
+      + * {
+        margin: rem(8);
+      }
+    }
+  }
+}
+</style>
