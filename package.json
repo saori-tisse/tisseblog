@@ -1,7 +1,7 @@
 {
   "name": "tisseblog",
   "version": "1.0.0",
-  "description": "My kryptonian Nuxt.js project",
+  "description": "tisse designさおりが運用する技術メインブログです。インプットしたことをメインに発信します。",
   "author": "saori-tisse",
   "private": true,
   "scripts": {

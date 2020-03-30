@@ -8,7 +8,10 @@
             <h3 class="meta_title">{{ item.title }}</h3>
           </nuxt-link>
           <p class="meta_time">
-            <time :datetime="item.createdAt">{{item.createdAt | moment }}</time>
+            <time :datetime="item.createdAt">
+              <i class="far fa-calendar"></i>
+              {{item.createdAt | moment }}
+            </time>
           </p>
         </div>
         <nuxt-link :to="'blog/' + item.id">
@@ -93,10 +96,16 @@ export default {
         font-size: rem(18);
         color: $color-main;
         min-height: rem(60);
+        @include mqdown(sp) {
+          font-size: rem(16);
+        }
       }
       &_time {
-        font-size: rem(12);
-        color: #ccc;
+        font-size: rem(16);
+        color: #707070;
+        @include mqdown(sp) {
+          font-size: rem(12);
+        }
       }
     }
     .img {
