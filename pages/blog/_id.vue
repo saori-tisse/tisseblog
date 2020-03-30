@@ -16,6 +16,12 @@
       <div class="post-contents">
         <div v-html="item.body"></div>
       </div>
+      <div class="post-category">
+        <p class="title">category:</p>
+        <div class="post-category_list" v-for="tag in item.tags">
+          <p class="item">{{tag.tags}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -99,6 +105,25 @@ export default {
           left: 0;
         }
       }
+    }
+  }
+  &-category {
+    margin-top: rem(30);
+    display: flex;
+    .title {
+      display: inline-block;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: rem(18);
+      margin-right: rem(16);
+    }
+    .item {
+      display: inline-block;
+      margin-right: rem(16);
+      padding: 2px 20px;
+      border-radius: 100rem;
+      background: rgba($color-main, 0.5);
+      color: #fff;
     }
   }
 }

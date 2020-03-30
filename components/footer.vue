@@ -25,7 +25,10 @@
       </ul>
     </div>
     <p class="copyright">
-      <small>&copy; tisse design</small>
+      <small>
+        &copy;
+        <nuxt-link :to="'/'">tisse design</nuxt-link>
+      </small>
     </p>
   </footer>
 </template>
@@ -57,5 +60,8 @@
 .copyright {
   margin-top: rem(16);
   text-align: center;
+  a {
+    color: $color-text;
+  }
 }
 </style>
