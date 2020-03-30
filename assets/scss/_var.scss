@@ -1,14 +1,4 @@
 
-//
-// -------------------------------------
-$color-main: #07005C;
-
-$color-link: #222;
-$color-text: #222;
-
-@function rem($font-size){
-  @return ($font-size)/16 * 1rem;
-}
 
 @mixin wrap {
   .wrap{
@@ -18,4 +8,65 @@ $color-text: #222;
     margin-left: auto;
     position: relative;
   }
+}
+
+//
+// color
+// ==============================
+$color-main: #07005C;
+$color-text: #222;
+$color-link: #222;
+$color-bg: #fafafa;
+$color-border: #ccc;
+
+// sns
+$color-twitter: #55acee;
+$color-facebook: #315096;
+$color-line: #00c300;
+$color-hatebu: #008fde;
+$color-feedly: #2bb24c;
+$color-rss: #f26522;
+$color-pocket: #ef4056;
+
+
+// letterspacing
+@mixin ls($num) {
+  letter-spacing: ($num / 1000) + em;
+}
+
+// line-height
+@mixin lh($fz,$line){
+  line-height: $line / $fz;
+}
+// SP→PC
+$breakpoints: (
+  'sp': 'screen and (min-width: 600px)',
+  'tab': 'screen and (min-width: 768px)',
+  'pc': 'screen and (min-width: 1024px)',
+  'lpc': 'screen and (min-width: 1400px)',
+) !default;
+
+@mixin mq($breakpoint: tab) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// PC→SP
+$breakpoints-down: (
+  'sp': 'screen and (max-width: 600px)',
+  'tab': 'screen and (max-width: 768px)',
+  'pc': 'screen and (max-width: 1024px)',
+  'lpc': 'screen and (max-width: 1440px)',
+) !default;
+
+@mixin mqdown($breakpoint: tab) {
+  @media #{map-get($breakpoints-down, $breakpoint)} {
+    @content;
+  }
+}
+
+
+@function rem($font-size){
+  @return ($font-size)/16 * 1rem;
 }

@@ -7,6 +7,9 @@
           <nuxt-link :to="'blog/' + item.id">
             <h3 class="meta_title">{{ item.title }}</h3>
           </nuxt-link>
+          <p class="meta_time">
+            <time :datetime="item.createdAt">{{item.createdAt | moment }}</time>
+          </p>
         </div>
         <nuxt-link :to="'blog/' + item.id">
           <figure v-if="item.icatch != null" class="img">{{item.icatch}}</figure>
@@ -22,6 +25,7 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
 
 export default {
   data() {
@@ -39,6 +43,11 @@ export default {
     return {
       items: data.contents
     };
+  },
+  filters: {
+    moment: function(date) {
+      return moment(date).format("YYYY/MM/DD");
+    }
   }
 };
 </script>
@@ -46,6 +55,7 @@ export default {
 <style lang="scss" scoped>
 .blog-list {
   display: flex;
+  flex-wrap: wrap;
   margin-top: rem(32);
   &_item {
     display: flex;
@@ -53,14 +63,40 @@ export default {
     width: calc(100% / 3 - 20px);
     margin-top: rem(20);
     box-shadow: 1px 1px 4px rgba(#ccc, 0.5);
+    transition: box-shadow 0.3s ease-in-out;
+    @include mqdown(tab) {
+      width: calc(50% - 20px);
+    }
+    @include mqdown(sp) {
+      width: 100%;
+    }
+    &:hover {
+      box-shadow: 2px 2px 4px rgba(#ccc, 0.7);
+    }
     &:nth-child(3n) {
       margin-right: rem(20);
+      @include mqdown(tab) {
+        margin-right: 0;
+      }
+    }
+    &:nth-child(2n) {
+      @include mqdown(tab) {
+        margin-right: rem(20);
+      }
+      @include mqdown(sp) {
+        margin-right: 0;
+      }
     }
     .meta {
       padding: 1em;
       &_title {
-        font-size: rem(20);
+        font-size: rem(18);
         color: $color-main;
+        min-height: rem(60);
+      }
+      &_time {
+        font-size: rem(12);
+        color: #ccc;
       }
     }
     .img {
@@ -68,11 +104,14 @@ export default {
       width: 100%;
       padding-top: 235px;
       position: relative;
+      overflow: hidden;
       img {
         position: absolute;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.4s ease-in-out;
+        transform-origin: center;
       }
     }
     .noimg {
