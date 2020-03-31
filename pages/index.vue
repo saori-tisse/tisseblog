@@ -1,8 +1,9 @@
 <template>
   <div class="wrap">
     <h2 class="screen-reader-text">ブログ一覧</h2>
-    <div v-for="item in items" class="blog-list">
-      <div class="blog-list_item">
+    <div class="blog-list">
+      <div v-for="item in items" class="blog-list_item">
+        <!-- <div class="blog-list_item"> -->
         <div class="meta">
           <nuxt-link :to="'blog/' + item.id">
             <h3 class="meta_title">{{ item.title }}</h3>
@@ -21,6 +22,7 @@
           </div>
         </nuxt-link>
       </div>
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -76,7 +78,7 @@ export default {
     &:hover {
       box-shadow: 2px 2px 4px rgba(#ccc, 0.7);
     }
-    &:nth-child(3n) {
+    &:not(:nth-child(3n)) {
       margin-right: rem(20);
       @include mqdown(tab) {
         margin-right: 0;
