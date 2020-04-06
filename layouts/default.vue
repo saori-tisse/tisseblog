@@ -10,6 +10,31 @@
 @include reset;
 @include wrap;
 
+// component
+.sec_ttl {
+  text-align: center;
+  font-size: rem(32);
+  @include ls(100);
+  font-family: $Great;
+  span {
+    background: linear-gradient(transparent 50%, #e6eaff 50%);
+  }
+  + * {
+    margin-top: rem(40);
+  }
+}
+.sub_ttl {
+  font-size: rem(20);
+  text-align: center;
+  + * {
+    margin-top: rem(20);
+  }
+}
+
+.flex {
+  display: flex;
+}
+
 .screen-reader-text {
   position: absolute;
   overflow: hidden;
