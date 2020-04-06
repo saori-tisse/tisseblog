@@ -54,6 +54,11 @@
           </div>
         </div>
       </section>
+      <section class="top-profile">
+        <h2 class="sec_ttl">
+          <span>Profile</span>
+        </h2>
+      </section>
     </div>
   </div>
 </template>
