@@ -1,28 +1,59 @@
 <template>
-  <div class="wrap">
-    <h2 class="screen-reader-text">ブログ一覧</h2>
-    <div class="blog-list">
-      <div v-for="item in items" class="blog-list_item">
-        <!-- <div class="blog-list_item"> -->
-        <div class="meta">
-          <nuxt-link :to="'blog/' + item.id">
-            <h3 class="meta_title">{{ item.title }}</h3>
-          </nuxt-link>
-          <p class="meta_time">
-            <time :datetime="item.createdAt">
-              <i class="far fa-calendar"></i>
-              {{item.createdAt | moment }}
-            </time>
-          </p>
-        </div>
-        <nuxt-link :to="'blog/' + item.id">
-          <figure v-if="item.icatch != null" class="img">{{item.icatch}}</figure>
-          <div v-else class="img noimg">
-            <div class="text">{{ item.title }}</div>
+  <div>
+    <div class="top_mv">
+      <img src="~/assets/img/bg_mv.jpg" alt v-parallax="0.5" />
+    </div>
+    <div class="wrap">
+      <section class="top_sec top-service">
+        <h2 class="sec_ttl">
+          <span>Service</span>
+        </h2>
+        <ul class="top-service_list flex">
+          <li>
+            <div class="top-service_item">
+              <div class="textbox">
+                <h3 class="sub_ttl">Webサイト制作</h3>
+                <p class="desp">企画からデザイン、コーディングまで一貫して対応いたします。</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="top-service_item">
+              <div class="textbox">
+                <h3 class="sub_ttl">コーディング代行</h3>
+                <p class="desp">HTML/CSS、JavaScript、WordPressなどのコーディング代行を承っています。</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <!-- /.top-service -->
+      <section class="top_sec top-blog">
+        <h2 class="sec_ttl">
+          <span>Blog</span>
+        </h2>
+        <div class="blog-list">
+          <div v-for="item in items" class="blog-list_item">
+            <div class="meta">
+              <nuxt-link :to="'blog/' + item.id">
+                <h3 class="meta_title">{{ item.title }}</h3>
+              </nuxt-link>
+              <p class="meta_time">
+                <time :datetime="item.createdAt">
+                  <i class="far fa-calendar"></i>
+                  {{item.createdAt | moment }}
+                </time>
+              </p>
+            </div>
+            <nuxt-link :to="'blog/' + item.id">
+              <figure v-if="item.icatch != null" class="img">{{item.icatch}}</figure>
+              <div v-else class="img noimg">
+                <div class="text">{{ item.title }}</div>
+              </div>
+            </nuxt-link>
           </div>
-        </nuxt-link>
-      </div>
-      <!-- </div> -->
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -58,6 +89,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.top {
+  &_sec {
+    + * {
+      margin-top: rem(60);
+    }
+  }
+  &_mv {
+    height: 500px;
+    overflow: hidden;
+    + * {
+      margin-top: rem(60);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  &-service {
+    &_list {
+      justify-content: space-between;
+      li {
+        width: calc(100% / 2 - 32px);
+      }
+    }
+    &_item {
+      border-radius: 4px;
+      box-shadow: 0 0 4px 0px rgba($color-main, 0.25);
+      padding: 1em;
+    }
+  }
+}
 .blog-list {
   display: flex;
   flex-wrap: wrap;
