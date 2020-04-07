@@ -58,6 +58,23 @@
         <h2 class="sec_ttl">
           <span>Profile</span>
         </h2>
+
+        <div class="top-profile_img">
+          <img src="~/assets/img/img_prof.jpg" alt />
+        </div>
+        <div class="top-profile_text">
+          <h3 class="name">なかみち さおり</h3>
+          <p>
+            1990年10月生まれ
+            <br />医療機器のCEやインフラ営業企画・技術支援を経験。
+            <br />家族の転勤のため退職し、家でも働けるスキルを、Webデザイナーを目指す。
+            <br />現在は、フリーランスのコーダーとして活動中。
+          </p>
+          <dl>
+            <dt>スキル</dt>
+            <dd>HTML / CSS / JavaScript (jQuery,Vanilla) / PHP / WordPress</dd>
+          </dl>
+        </div>
       </section>
     </div>
   </div>
@@ -97,7 +114,7 @@ export default {
 .top {
   &_sec {
     + * {
-      margin-top: rem(60);
+      margin-top: rem(100);
     }
   }
   &_mv {
@@ -124,6 +141,25 @@ export default {
       border-radius: 4px;
       box-shadow: 0 0 4px 0px rgba($color-main, 0.25);
       padding: 1em;
+    }
+  }
+  &-profile {
+    &_img {
+      width: 120px;
+      margin-right: auto;
+      margin-left: auto;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    &_text {
+      width: 600px;
+      max-width: 100%;
+      margin: rem(30) auto;
+      .name {
+        text-align: center;
+        font-weight: normal;
+        @include ls(50);
+      }
     }
   }
 }
